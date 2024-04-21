@@ -155,3 +155,68 @@ div.experience-container {
         }
     }
 }
+
+//LÄGG TILL-sidan
+div.add-headlines {
+    width: fit-content;
+    margin: 4em auto;
+}
+
+form {
+    width: 55%;
+    margin: auto;
+
+    span.error {
+        display: block;
+        margin: 0 0 1em 1em;
+        color: red;
+    }
+
+    input,
+    textarea {
+        display: block;
+        width: 100%;
+        padding: 0.7em;
+        font-size: 1em;
+        font-family: a.$bread;
+        border-radius: 20px;
+        border: 2.5px solid a.$blue;
+        margin-bottom: 1.5em;
+        background-color: rgba(0, 0, 0, 0);
+        color: a.$midgrey;
+    }
+    textarea {
+        height: 10em;
+        padding: 1em;
+    }
+    input[type='submit'] {
+        width: fit-content;
+        margin-top: 2em;
+        font-size: 1.2em;
+        padding: 0.7em 1.2em;
+        background-color: a.$orange;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-family: a.$h2;
+        @include a.transition;
+
+        &:hover {
+            background-color: a.$blue;
+        }
+    }
+    span.charcount {
+        font-size: 0.7em;
+        margin-left: 70%;
+    }
+    div.date-container {
+        width: 70%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+    }
+    label {
+        font-size: 1.1em;
+        margin-left: 0.9em;
+    }
+}

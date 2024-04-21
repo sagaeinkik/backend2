@@ -1,7 +1,14 @@
 'use strict';
+const experienceContainer = document.querySelector('div.experience-container'); //Container som posterna ska in i
 
 //Gör fetch-anrop när sidan har laddat
-document.addEventListener('DOMContentLoaded', fetchData);
+document.addEventListener('DOMContentLoaded', () => {
+    fetchData();
+
+    const waitP = document.createElement('p');
+    waitP.innerText = 'Var god vänta...';
+    experienceContainer.appendChild(waitP);
+});
 let url = 'https://cv-api-nqg3.onrender.com/api/cv';
 
 //Funktion som hämtar all data
@@ -9,7 +16,11 @@ async function fetchData() {
     try {
         const response = await fetch(url);
         const data = await response.json();
-
+        if (data.length < 1) {
+            const noDataP = document.createElement('p');
+            noDataP.innerText = 'Det finns inga jobb att visa ännu...';
+            experienceContainer.appendChild(noDataP);
+        }
         printData(data);
     } catch (error) {
         console.error('Fetch error:', error);
@@ -18,9 +29,11 @@ async function fetchData() {
 }
 
 function printData(data) {
-    console.log(data);
-    const experienceContainer = document.querySelector('div.experience-container'); //Container som posterna ska in i
-    experienceContainer.innerHTML = '';
+    experienceContainer.innerHTML = `<h2>Erfarenheter</h2>`;
+
+    if (data.length < 1) {
+        experienceContainer.innerHTML += '<p>Det finns inget att visa...</p>';
+    }
 
     data.forEach((job) => {
         //Variabler för datum
@@ -63,9 +76,9 @@ function printData(data) {
         }
 
         //Företagsnamn
-        const companyP = document.createElement('p');
-        companyP.classList.add('companyname');
-        companyP.innerText = job.company;
+        const employerP = document.createElement('p');
+        employerP.classList.add('employername');
+        employerP.innerText = job.employer;
 
         //Jobbeskrivning
         const descP = document.createElement('p');
@@ -75,7 +88,7 @@ function printData(data) {
         //In i section-elementet och lägg i article-element
         sectionEl.appendChild(titleP);
         sectionEl.appendChild(spanP);
-        sectionEl.appendChild(companyP);
+        sectionEl.appendChild(employerP);
         sectionEl.appendChild(descP);
         articleEl.appendChild(sectionEl);
 
@@ -106,6 +119,7 @@ function printData(data) {
     });
 }
 
+//Funktion som gör om bindestreck till punkt
 function hyphenToDot(string) {
     return string.replace(/-/g, '.');
 }
@@ -120,11 +134,9 @@ async function deleteJob(jobId) {
                 'content-type': 'Application/json',
             },
         });
-        //Kolla om det gick bra, i så fall skriv ut meddelandet till konsollen
+        //Kolla om det gick bra, isåfall uppdatera vyn
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
-            //Uppdatera vyn
             fetchData();
         }
     } catch (error) {

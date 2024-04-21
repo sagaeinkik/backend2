@@ -25,6 +25,23 @@
             background-color: lighten(a.$blue, 10%);
         }
     }
+    form {
+        span.error {
+            color: rgb(255, 83, 83);
+        }
+        input,
+        textarea {
+            border-color: a.$orange;
+            color: a.$lightgrey;
+        }
+        input[type='submit'] {
+            background-color: a.$blue;
+
+            &:hover {
+                background-color: a.$orange;
+            }
+        }
+    }
 }
 
 @media (min-width: 1900px) {

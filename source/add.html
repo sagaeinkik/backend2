@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lägg till nytt jobb</title>
     <link rel="stylesheet" href="sass/main.scss">
+    <script src="js/addJob.js" type="module"></script>
 </head>
 
 <body>
@@ -18,8 +19,8 @@
                     <span class="burger-bar"></span></button>
                 <nav>
                     <ul>
-                        <li><a href="index.html" aria-current="page">Se jobb</a></li>
-                        <li><a href="#">Lägg till</a></li>
+                        <li><a href="index.html">Se jobb</a></li>
+                        <li><a href="add.html" aria-current="page">Lägg till</a></li>
                         <li><a href="#">Om sidan</a></li>
                     </ul>
                 </nav>
@@ -28,8 +29,30 @@
             </header>
             <div class="main-container">
                 <main>
+                    <div class="add-headlines">
+                        <h1>Jobtrackr</h1>
+                        <h2>Utöka din karriär. Lägg till jobb.</h2>
+                    </div> <!-- Slut på add-headlines -->
                     <form>
-                        hej
+                        <span class="error"></span>
+                        <label for="employer">Arbetsgivare:</label>
+                        <input type="text" name="employer" id="employer" placeholder="T.ex Företag AB">
+                        <label for="title">Jobbtitel:</label>
+                        <input type="text" name="title" id="title" placeholder="T.ex Kattvallare">
+                        <label for="description">Jobbeskrivning</label><span class="charcount">255</span>
+                        <textarea name="description" id="description" placeholder="T.ex kokade kaffe"
+                            maxlength="255"></textarea>
+                        <div class="date-container">
+                            <div class="date">
+                                <label for="startDate">Startdatum:</label>
+                                <input type="date" name="startDate" id="startDate">
+                            </div> <!--  Slut på date -->
+                            <div class="date">
+                                <label for="endDate">Slutdatum:</label>
+                                <input type="date" name="endDate" id="endDate">
+                            </div> <!-- Slut på date -->
+                        </div> <!-- Slut på date-container -->
+                        <input type="submit" value="Lägg till">
                     </form>
                 </main>
             </div> <!-- Slut på main-container -->
