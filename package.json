@@ -1,0 +1,16 @@
+{
+  "name": "moment2-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "source": "source/index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0"
+  }
+}

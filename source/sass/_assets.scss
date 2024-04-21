@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&family=MuseoModerno:ital,wght@0,100..900;1,100..900&family=News+Cycle:wght@400;700&display=swap');
+
+//Färger
+$blue: #235781;
+$orange: #e78b00;
+$lightgrey: #f8f8f8;
+$midgrey: #595959;
+$darkgrey: #272727;
+
+//Fonts
+$h1: 'Montserrat Subrayada', Arial, Helvetica, sans-serif;
+$h2: 'MuseoModerno', Arial, Helvetica, sans-serif;
+$bread: 'News Cycle', arial, Helvetica, sans-serif;
+
+@mixin transition {
+    transition: 0.5s ease-in-out;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeNSlide {
+    0% {
+        opacity: 0;
+        top: 100px;
+    }
+    30% {
+        opacity: 0;
+        top: 70px;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+@keyframes delayFade {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

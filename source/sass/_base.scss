@@ -1,0 +1,58 @@
+@use 'assets' as a;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    max-width: 2500px;
+    margin: auto;
+    overflow-x: hidden;
+    font-family: a.$bread;
+    background-color: a.$lightgrey;
+    position: relative;
+}
+
+.wrapper {
+    position: relative;
+    overflow-x: hidden;
+}
+
+.main-container {
+    height: 100vh;
+    max-height: 100vh;
+    overflow-y: scroll;
+}
+
+h1#landing-h1 {
+    font-family: a.$h1;
+    font-size: 3.5em;
+    line-height: 1;
+    color: a.$orange;
+}
+h2 {
+    font-family: a.$h2;
+    font-weight: 400;
+    color: a.$midgrey;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+nav ul li a {
+    color: white;
+    font-family: a.$h2;
+}
+
+p.credits {
+    font-size: 0.8em;
+    color: a.$midgrey;
+}

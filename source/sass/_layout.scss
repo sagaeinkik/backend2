@@ -1,0 +1,166 @@
+@use 'assets' as a;
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 7fr 2fr;
+    grid-template-areas: 'content header';
+}
+
+main {
+    grid-area: content;
+}
+
+header {
+    background-color: a.$blue;
+    grid-area: header;
+    height: 100%;
+    position: relative;
+
+    p.credits {
+        position: absolute;
+        bottom: 5px;
+        width: 100%;
+        color: white;
+        font-size: 0.7em;
+        padding: 0.8em;
+    }
+}
+
+.burgerbtn {
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    z-index: 2;
+    right: 20px;
+    top: 20px;
+    display: none;
+    span.burger-bar {
+        display: block;
+        margin: 5px;
+        width: 30px;
+        height: 3px;
+        background-color: a.$midgrey;
+    }
+}
+/* Navigering desktop */
+nav {
+    ul {
+        display: flex;
+        flex-direction: column;
+        height: 40vh;
+        justify-content: space-evenly;
+        align-items: center;
+        li a {
+            @include a.transition;
+        }
+        li a:hover {
+            color: a.$orange;
+        }
+        li a[aria-current='page'] {
+            color: a.$orange;
+        }
+    }
+}
+
+.landinginfo {
+    width: 95%;
+    margin: 2em auto;
+    display: grid;
+    grid-template-columns: 4fr 5fr;
+    grid-gap: 1em;
+
+    img {
+        width: 100%;
+        animation: fadeIn 2s;
+    }
+
+    .landinginfo-text {
+        margin-top: 2em;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        animation: fadeNSlide 2.8s;
+        position: relative;
+    }
+}
+
+div.experience-container {
+    animation: delayFade 3s;
+    width: 70%;
+    margin: 4em auto 0;
+
+    h2 {
+        font-size: 2em;
+        border-bottom: 2px solid a.$blue;
+    }
+
+    article {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        border-bottom: 2px solid a.$blue;
+        padding: 1.5em 1em;
+
+        p.jobtitle {
+            font-weight: bold;
+            font-size: 1.2em;
+            display: inline;
+        }
+        span.dates {
+            margin-left: 1em;
+            font-size: 0.9em;
+            color: a.$midgrey;
+        }
+        p.jobdesc {
+            max-width: 35em;
+            margin-top: 0.4em;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+    }
+    article:last-child {
+        margin-bottom: 4em;
+    }
+    div.controls {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        button {
+            padding: 0.4em;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            @include a.transition;
+
+            i {
+                font-size: 1.5em;
+                color: white;
+            }
+        }
+        .edit {
+            background-color: a.$blue;
+
+            &:hover {
+                background-color: darken(a.$blue, 15%);
+            }
+        }
+        .delete {
+            background-color: a.$orange;
+            &:hover {
+                background-color: darken(a.$orange, 15%);
+            }
+        }
+    }
+}
+
+footer p {
+    width: fit-content;
+    max-width: 40em;
+    position: absolute;
+    bottom: 0;
+    left: 35%;
+    transform: translateX(-35%);
+}

@@ -1,0 +1,34 @@
+@use 'assets' as a;
+
+//Dark mode
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: a.$darkgrey;
+        color: a.$lightgrey;
+    }
+    h2 {
+        color: a.$lightgrey;
+    }
+
+    div.experience-container {
+        h2 {
+            border-bottom: 2px solid a.$orange;
+        }
+        article {
+            border-bottom: 2px solid a.$orange;
+
+            span.dates {
+                color: a.$lightgrey;
+            }
+        }
+    }
+}
+
+@media (min-width: 1900px) {
+    h1#landing-h1 {
+        font-size: 5em;
+    }
+    h2#landing-h2 {
+        font-size: 2.15em;
+    }
+}
