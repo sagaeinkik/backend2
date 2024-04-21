@@ -20,6 +20,7 @@ async function fetchData() {
 function printData(data) {
     console.log(data);
     const experienceContainer = document.querySelector('div.experience-container'); //Container som posterna ska in i
+    experienceContainer.innerHTML = '';
 
     data.forEach((job) => {
         //Variabler för datum
@@ -91,6 +92,10 @@ function printData(data) {
         const deleteBtn = document.createElement('button');
         deleteBtn.classList.add('delete');
         deleteBtn.innerHTML = `<i class="fa-regular fa-trash-can"></i>`;
+        // Eventlistener för radering
+        deleteBtn.addEventListener('click', () => {
+            deleteJob(job.id);
+        });
 
         controlsDiv.appendChild(editBtn);
         controlsDiv.appendChild(deleteBtn);
@@ -103,4 +108,26 @@ function printData(data) {
 
 function hyphenToDot(string) {
     return string.replace(/-/g, '.');
+}
+
+//Funktion som raderar
+async function deleteJob(jobId) {
+    try {
+        const response = await fetch(`${url}/${jobId}`, {
+            //Skicka med metod och headers
+            method: 'DELETE',
+            headers: {
+                'content-type': 'Application/json',
+            },
+        });
+        //Kolla om det gick bra, i så fall skriv ut meddelandet till konsollen
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+            //Uppdatera vyn
+            fetchData();
+        }
+    } catch (error) {
+        console.error('Delete error:', error);
+    }
 }
