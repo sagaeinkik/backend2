@@ -21,6 +21,9 @@
                 color: a.$lightgrey;
             }
         }
+        div.controls .edit:hover {
+            background-color: lighten(a.$blue, 10%);
+        }
     }
 }
 
