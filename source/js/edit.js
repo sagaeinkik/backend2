@@ -51,6 +51,7 @@ function validateInput(employer, title, description, startDate) {
 
 // Funktion för att uppdatera teckenräknaren och begränsa antalet tecken
 function updateCharCount() {
+    console.log('Charcount kallad');
     const maxLength = 255;
     const currentLength = descriptionInput.value.length;
 
@@ -64,12 +65,13 @@ function updateCharCount() {
     }
 }
 
+//Hämta jobbet
 async function fetchJob(id) {
     const updateUrl = url + '/' + id;
-    console.log(updateUrl);
     try {
         const response = await fetch(updateUrl);
         const data = await response.json();
+        //Skicka med data till funktion som fyller i fälten
         fillForm(data);
     } catch (error) {
         console.log(error);
@@ -92,6 +94,8 @@ function fillForm(job) {
         const endDate = new Date(job[0].end_date);
         document.getElementById('endDate').value = formatDate(endDate);
     }
+    //Uppdatera antal tecken kvar att skriva
+    updateCharCount();
 }
 
 //Formattera datum
@@ -117,14 +121,15 @@ async function updateJob() {
     let desc = descriptionInput.value;
     let startDate = document.getElementById('startDate').value;
     let endDate = document.getElementById('endDate').value;
-
+    //Tilldela värdet null om det saknas slutdatum
     if (!endDate) {
         endDate = null;
     }
-
+    //Validera input
     if (!validateInput(employer, title, desc, startDate)) {
         return;
     }
+    //Skapa objekt
     let updatedJob = {
         employer: employer,
         title: title,
@@ -134,6 +139,7 @@ async function updateJob() {
     };
 
     try {
+        //PUT-anrop med jobbet som argument
         const response = await fetch(updateUrl, {
             method: 'PUT',
             headers: {
@@ -142,9 +148,9 @@ async function updateJob() {
             body: JSON.stringify(updatedJob),
         });
         if (response.ok) {
+            //Omdirigera till start
             const data = await response.json();
             window.location.href = 'index.html';
-            console.log(data);
         } else {
             errorSpan.innerText = error;
         }

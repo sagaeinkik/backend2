@@ -4,25 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webbtjänst</title>
+    <title>CV-hanterare</title>
     <link rel="stylesheet" href="sass/main.scss">
     <script src="https://kit.fontawesome.com/a891bda96a.js" crossorigin="anonymous"></script>
     <script src="js/experience.js" type="module"></script>
+    <script src="js/burger.js" type="module"></script>
 </head>
 
 <body>
     <div class="wrapper">
         <div class="grid-container">
+            <button class="burgerbtn">
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span></button>
             <header>
-                <button class="burgerbtn">
-                    <span class="burger-bar"></span>
-                    <span class="burger-bar"></span>
-                    <span class="burger-bar"></span></button>
                 <nav>
                     <ul>
                         <li><a href="index.html" aria-current="page">Se jobb</a></li>
                         <li><a href="add.html">Lägg till</a></li>
-                        <li><a href="#">Om sidan</a></li>
+                        <li><a href="about.html">Om sidan</a></li>
+                        <a href="edit.html"></a>
                     </ul>
                 </nav>
                 <p class="credits">Gjord av Saga Einarsdotter Kikajon för Backendbaserad Webbutveckling på
@@ -31,11 +33,11 @@
             <div class="main-container">
                 <main>
                     <div class="landinginfo">
-                        <img src="img/undraw_interview.svg" alt="Illustration av två personer under en jobbintervju">
                         <div class="landinginfo-text">
                             <h1 id="landing-h1">Jobtrackr</h1>
                             <h2 id="landing-h2">Hantera arbetslivserfarenheter</h2>
                         </div> <!-- Slut på landinginfo text -->
+                        <img src="img/undraw_interview.svg" alt="Illustration av två personer under en jobbintervju">
                     </div> <!-- Slut på landinginfo -->
                     <div class="experience-container">
                         <h2>Erfarenheter</h2>

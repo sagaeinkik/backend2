@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om sidan</title>
+    <link rel="stylesheet" href="sass/main.scss">
+    <script src="js/burger.js" type="module"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="grid-container">
+            <button class="burgerbtn">
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span>
+                <span class="burger-bar"></span></button>
+            <header>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Se jobb</a></li>
+                        <li><a href="add.html">Lägg till</a></li>
+                        <li><a href="about" aria-current="page">Om sidan</a></li>
+                        <a href="edit.html"></a>
+                    </ul>
+                </nav>
+                <p class="credits">Gjord av Saga Einarsdotter Kikajon för Backendbaserad Webbutveckling på
+                    Mittuniversitetet.</p>
+            </header>
+            <div class="main-container">
+                <main>
+                    <div class="landinginfo aboutpage">
+                        <div class="landinginfo-text">
+                            <h1 id="landing-h1">Jobtrackr</h1>
+                            <h2 id="landing-h2">Om sidan, om uppgiften, om mig</h2>
+                        </div> <!-- Slut på landinginfo text -->
+                        <img src="img/undraw_programmer.svg" alt="Illustration av en person framför en dator">
+                    </div> <!-- Slut på landinginfo -->
+                    <div class="about">
+                        <h2>Om sidan</h2>
+                        <p class="no-top-margin">
+                            Sidan skapades för kursen DT207G, Backendbaserad Webbutveckling, på Mittuniversitetet, i
+                            moment 2. <br>
+                            Uppgiften gick ut på att skapa ett RESTful API och sedan använda sig av sitt eget API i
+                            fetchanrop på en webbplats som är helt separerad från API:et i övrigt.
+                        </p>
+                        <p>Den är skapad med hjälp av Parcel som bundler, scss, och vanilla JavaScript. Anropen
+                            är gjorda med fetchAPI med GET, POST, PUT och DELETE. Jag har satsat på hela spektrumet av
+                            funktionalitet trots att PUT var valfritt.</p>
+                        <h2>Om Webbtjänsten</h2>
+                        <p>Webbtjänsten är byggd i NodeJS med hjälp av Express, pg och cors. Till en början försökte jag
+                            använda mig av MySQL som DBMS via filess.io och publicera API:et till Render, men upplevde
+                            otroligt mycket problem med att webbtjänsten havererade med jämna mellanrum och inte gick
+                            att anropa på grund av begränsningar. Det var lite som att dra tänder faktiskt. Det var bara
+                            inte kul.</p>
+                        <p>Därför är webbtjänsten nu kopplad till en PostgreSQL-databas på Render och även publicerad
+                            till Render. Efter detta byte av DBMS stänger API:et inte ner sig vid query-fel.</p>
+                        En Readme-fil finns tillgänglig på <a href="https://github.com/sagaeinkik/cv-api"
+                            target="_blank">github-repot</a> för webbtjänsten.
+                        <h2>Slutsatser</h2>
+                        <p>Det här har varit en otroligt lärorik uppgift som gav insikter jag har funderat över länge.
+                            Att bygga sitt eget API har varit så spännande och utmanande.</p>
+                        <p>Tyvärr blev det lite för utmanande när API:et totalkraschade hela tiden och inte gick
+                            att starta om, så det har tagit lång tid att bli klar, eländet har
+                            varit totalt och frustrationen ännu högre.</p>
+                        <p>Men även fast det vid många tillfällen var som att klämma blod ur sten så är jag många
+                            jobbiga
+                            erfarenheter rikare nu, och är imponerad över hur enkelt det är att uppdatera en databas med
+                            hjälp av ett API. Det har blivit tydligare för mig exakt hur man menar när man säger att en
+                            webbtjänst är som en brygga mellan klient och server, så det har varit kul att se.</p>
+                        <p>Och även om jag har ett stort blåmärke i pannan efter att ha bankat det i bordet för många
+                            gånger så har jag ändå lyckats skapa något som fungerar (tror jag!), och det är ju helt
+                            ofattbart.</p>
+                    </div>
+                </main>
+            </div> <!-- Slut på main-container -->
+        </div> <!-- Slut på grid-container -->
+    </div> <!-- Slut på div.wrapper -->
+</body>
+
+</html>

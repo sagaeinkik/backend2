@@ -4,7 +4,7 @@ const experienceContainer = document.querySelector('div.experience-container'); 
 //Gör fetch-anrop när sidan har laddat
 document.addEventListener('DOMContentLoaded', () => {
     fetchData();
-
+    //Meddelande medan man väntar
     const waitP = document.createElement('p');
     waitP.innerText = 'Var god vänta...';
     experienceContainer.appendChild(waitP);
@@ -16,11 +16,14 @@ async function fetchData() {
     try {
         const response = await fetch(url);
         const data = await response.json();
+        //alternativt meddelande om det inte finns nå data
         if (data.length < 1) {
             const noDataP = document.createElement('p');
             noDataP.innerText = 'Det finns inga jobb att visa ännu...';
             experienceContainer.appendChild(noDataP);
+            return;
         }
+        //Anropa funktion som skriver ut till skärmen
         printData(data);
     } catch (error) {
         console.error('Fetch error:', error);
@@ -28,13 +31,16 @@ async function fetchData() {
     }
 }
 
+//Funktion som skriver ut data till skärm
 function printData(data) {
+    //Töm container på alla tidigare rader
     experienceContainer.innerHTML = `<h2>Erfarenheter</h2>`;
 
     if (data.length < 1) {
         experienceContainer.innerHTML += '<p>Det finns inget att visa...</p>';
     }
 
+    //Loopa igenom
     data.forEach((job) => {
         //Variabler för datum
         let startDate = job.start_date;

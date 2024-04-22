@@ -1,11 +1,13 @@
 @use 'assets' as a;
 
+//Ta bort margin, padding, box-sizing
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+//Regler för bredd, typsnitt, färger osv
 body {
     width: 100%;
     max-width: 2500px;
@@ -16,17 +18,20 @@ body {
     position: relative;
 }
 
+//Overflow-x hidden
 .wrapper {
     position: relative;
     overflow-x: hidden;
 }
 
+//Se till att content sträcker sig över hela viewport men kan scrolla
 .main-container {
     height: 100vh;
     max-height: 100vh;
     overflow-y: scroll;
 }
 
+//Allmänna rubrikregler
 h1 {
     font-family: a.$h1;
     font-size: 3.5em;
@@ -39,14 +44,16 @@ h2 {
     color: a.$midgrey;
 }
 
+//Allmänna listregler
 ul li {
     list-style: none;
 }
 
+//Ta bort understrykning
 a {
     text-decoration: none;
 }
-
+//Gör nav länkar vita
 nav ul li a {
     color: white;
     font-family: a.$h2;

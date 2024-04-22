@@ -2,6 +2,7 @@
 
 //Dark mode
 @media (prefers-color-scheme: dark) {
+    //Ändra färger
     body {
         background-color: a.$darkgrey;
         color: a.$lightgrey;
@@ -9,7 +10,7 @@
     h2 {
         color: a.$lightgrey;
     }
-
+    //Ändra färger för understreck
     div.experience-container {
         h2 {
             border-bottom: 2px solid a.$orange;
@@ -25,6 +26,7 @@
             background-color: lighten(a.$blue, 10%);
         }
     }
+    //Ändra färger i formulär
     form {
         span.error {
             color: rgb(255, 83, 83);
@@ -45,13 +47,145 @@
             color-scheme: dark;
         }
     }
+    //Hamburgare
+    .burgerbtn {
+        background-color: a.$darkgrey;
+    }
+    .burgerbtn span.burger-bar {
+        background-color: a.$lightgrey;
+    }
+    .burgerbtn:hover span.burger-bar {
+        background-color: a.$orange;
+    }
+    .burgerbtn.active:hover span.burger-bar {
+        background-color: a.$lightgrey;
+    }
+    //Ändra färger om-sidan
+    div.about {
+        h2 {
+            border-color: a.$orange;
+        }
+        a {
+            color: a.$orange;
+
+            &:hover {
+                color: lighten(a.$orange, 20%);
+            }
+        }
+    }
 }
 
+//Gör h1 och h2 större vid stora skärmstorlekar
 @media (min-width: 1900px) {
     h1#landing-h1 {
         font-size: 5em;
     }
     h2#landing-h2 {
         font-size: 2.15em;
+    }
+}
+
+//1100px
+@media (max-width: 1100px) {
+    //Anpassa grid-fördelning
+    .grid-container {
+        grid-template-columns: 5fr 2fr;
+    }
+    //Gör textstorlekar mindre
+    h1 {
+        font-size: 2.7em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
+    //Bredda erfarenheter
+    div.experience-container {
+        width: 90%;
+    }
+    .landinginfo img {
+        margin-left: 0;
+    }
+
+    //formulär
+    form {
+        width: 95%;
+    }
+
+    //om-sidan
+    div.about {
+        padding: 1em;
+    }
+}
+
+//730px
+@media (max-width: 730px) {
+    //Flytta in lilla teckenräknaren
+    form span.charcount {
+        margin-left: 50%;
+    }
+    //Bredda datumen
+    form div.date-container {
+        width: 100%;
+    }
+    //Gör om grid till flex
+    .landinginfo {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2em;
+        img {
+            width: 70%;
+            margin: auto;
+        }
+    }
+    div.about {
+        margin: 2em auto;
+    }
+}
+
+//650px: mobilnavigering
+@media (max-width: 650px) {
+    .grid-container {
+        //Ta bort grid-upplägget
+        display: initial;
+    }
+
+    nav {
+        //Mobilmenyn:
+        position: absolute;
+        background-color: a.$blue;
+        height: 100vh;
+        width: 80%;
+        right: -200%;
+        z-index: 1;
+        @include a.transition;
+    }
+    //Flytta in när active
+    nav.active {
+        right: 0;
+    }
+    //Visa burgaren
+    .burgerbtn {
+        display: block;
+    }
+}
+
+//375px
+@media (max-width: 375px) {
+    //Flytta om datumen
+    form div.date-container {
+        display: block;
+    }
+    //Minska rubriker
+    h1 {
+        font-size: 2.3em;
+    }
+    h2 {
+        font-size: 1em;
+    }
+    //Radbrytning vid datumen
+    div.experience-container article span.dates {
+        display: block;
+        margin-left: 0;
+        font-size: 0.8em;
     }
 }

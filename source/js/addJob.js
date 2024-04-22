@@ -61,13 +61,16 @@ async function addJob(e) {
     let startDate = document.getElementById('startDate').value;
     let endDate = document.getElementById('endDate').value;
 
+    //Tilldela värde vid avsaknad av end date
     if (!endDate) {
         endDate = null;
     }
-
+    //Validera input
     if (!validateInput(employer, title, desc, startDate)) {
         return;
     }
+
+    //Skapa nytt objekt
     let newJob = {
         employer: employer,
         title: title,
@@ -77,18 +80,21 @@ async function addJob(e) {
     };
 
     try {
+        //Gör post-anrop
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'content-type': 'Application/json',
             },
+            //Skicka med objektet
             body: JSON.stringify(newJob),
         });
         if (response.ok) {
+            //Om allt gick bra, omdirigera till startsidan
             const data = await response.json();
             window.location.href = 'index.html';
-            console.log(data);
         } else {
+            //Visa error annars
             errorSpan.innerText = error;
         }
     } catch (error) {
