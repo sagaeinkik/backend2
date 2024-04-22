@@ -50,6 +50,7 @@ header {
     }
     //Hamburgerknapp aktiv
     &.active {
+        background-color: rgba(0, 0, 0, 0);
         //Färger och rotering för aktiva hamburgerstreck
         span.burger-bar {
             background-color: a.$orange;
