@@ -151,17 +151,17 @@
 
     nav {
         //Mobilmenyn:
-        position: absolute;
+        position: fixed;
         background-color: a.$blue;
         height: 100vh;
         width: 80%;
-        right: -200%;
+        left: -200%;
         z-index: 1;
         @include a.transition;
     }
     //Flytta in när active
     nav.active {
-        right: 0;
+        left: 0;
     }
     //Visa burgaren
     .burgerbtn {
