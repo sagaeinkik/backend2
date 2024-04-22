@@ -155,13 +155,13 @@
         background-color: a.$blue;
         height: 100vh;
         width: 80%;
-        left: -200%;
+        right: -200%;
         z-index: 1;
         @include a.transition;
     }
     //Flytta in när active
     nav.active {
-        left: 0;
+        right: 0;
     }
     //Visa burgaren
     .burgerbtn {
