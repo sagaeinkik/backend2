@@ -6,12 +6,24 @@ const descriptionInput = document.getElementById('description'); // Textarea job
 const charCountSpan = document.querySelector('.charcount'); // span med siffra
 const form = document.querySelector('form'); //formuläret
 let url = 'https://cv-api-nqg3.onrender.com/api/cv'; //API
+/* import { validateInput, updateCharCount } from './addJob.js'; */
+
+//Hämta ID från url
+document.addEventListener('DOMContentLoaded', (e) => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    fetchJob(id);
+});
 
 // händelselyssnare som uppdaterar räknaren vid input
-descriptionInput.addEventListener('input', updateCharCount);
+if (descriptionInput) {
+    descriptionInput.addEventListener('input', updateCharCount);
+}
+
+//Inskick av formulär
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    addJob(e);
+    updateJob();
 });
 
 //Funktion för att validera input
@@ -52,9 +64,54 @@ function updateCharCount() {
     }
 }
 
-//Lägg till jobb
-async function addJob(e) {
-    //Formulärfält värden
+async function fetchJob(id) {
+    const updateUrl = url + '/' + id;
+    console.log(updateUrl);
+    try {
+        const response = await fetch(updateUrl);
+        const data = await response.json();
+        fillForm(data);
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
+//Funktion som fyller formulär
+function fillForm(job) {
+    //peta in värdena från databasen i fälten
+    document.getElementById('employer').value = job[0].employer;
+    document.getElementById('title').value = job[0].title;
+    document.getElementById('description').value = job[0].description;
+    //Formattera startDate
+    const startDate = new Date(job[0].start_date);
+    document.getElementById('startDate').value = formatDate(startDate);
+
+    //Formattera end date om det finns
+    if (job[0].end_date) {
+        const endDate = new Date(job[0].end_date);
+        document.getElementById('endDate').value = formatDate(endDate);
+    }
+}
+
+//Formattera datum
+function formatDate(date) {
+    const year = date.getFullYear();
+    //Se till att månad alltid är 2 siffror
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    //samma med dag
+    const day = String(date.getDate()).padStart(2, '0');
+    //returnera formatterade datumet
+    return `${year}-${month}-${day}`;
+}
+
+//Uppdatera jobb!
+async function updateJob() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const updateUrl = url + '/' + id;
+
+    //Formulärvärden
     let employer = document.getElementById('employer').value;
     let title = document.getElementById('title').value;
     let desc = descriptionInput.value;
@@ -68,7 +125,7 @@ async function addJob(e) {
     if (!validateInput(employer, title, desc, startDate)) {
         return;
     }
-    let newJob = {
+    let updatedJob = {
         employer: employer,
         title: title,
         description: desc,
@@ -77,12 +134,12 @@ async function addJob(e) {
     };
 
     try {
-        const response = await fetch(url, {
-            method: 'POST',
+        const response = await fetch(updateUrl, {
+            method: 'PUT',
             headers: {
                 'content-type': 'Application/json',
             },
-            body: JSON.stringify(newJob),
+            body: JSON.stringify(updatedJob),
         });
         if (response.ok) {
             const data = await response.json();

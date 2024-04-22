@@ -100,6 +100,11 @@ function printData(data) {
         const editBtn = document.createElement('button');
         editBtn.classList.add('edit');
         editBtn.innerHTML = `<i class="fa-regular fa-pen-to-square"></i>`;
+        //Eventlistener för uppdatering
+        editBtn.addEventListener('click', () => {
+            const id = job.id;
+            window.location.href = `/edit.html?id=${id}`;
+        });
 
         //Delete-knapp
         const deleteBtn = document.createElement('button');

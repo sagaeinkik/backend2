@@ -205,6 +205,9 @@ form {
             background-color: a.$blue;
         }
     }
+    input[type='date']::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+    }
     span.charcount {
         font-size: 0.7em;
         margin-left: 70%;

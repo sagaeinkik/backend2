@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till nytt jobb</title>
+    <link rel="stylesheet" href="sass/main.scss">
+    <script src="js/edit.js" type="module"></script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="grid-container">
+            <header>
+                <button class="burgerbtn">
+                    <span class="burger-bar"></span>
+                    <span class="burger-bar"></span>
+                    <span class="burger-bar"></span></button>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Se jobb</a></li>
+                        <li><a href="add.html">Lägg till</a></li>
+                        <li><a href="#">Om sidan</a></li>
+                    </ul>
+                </nav>
+                <p class="credits">Gjord av Saga Einarsdotter Kikajon för Backendbaserad Webbutveckling på
+                    Mittuniversitetet.</p>
+            </header>
+            <div class="main-container">
+                <main>
+                    <div class="add-headlines">
+                        <h1>Jobtrackr</h1>
+                        <h2>Uppdatera tidigare jobb</h2>
+                    </div> <!-- Slut på add-headlines -->
+                    <form>
+                        <span class="error"></span>
+                        <label for="employer">Arbetsgivare:</label>
+                        <input type="text" name="employer" id="employer" placeholder="T.ex Företag AB">
+                        <label for="title">Jobbtitel:</label>
+                        <input type="text" name="title" id="title" placeholder="T.ex Kattvallare">
+                        <label for="description">Jobbeskrivning</label><span class="charcount">255</span>
+                        <textarea name="description" id="description" placeholder="T.ex kokade kaffe"
+                            maxlength="255"></textarea>
+                        <div class="date-container">
+                            <div class="date">
+                                <label for="startDate">Startdatum:</label>
+                                <input type="date" name="startDate" id="startDate">
+                            </div> <!--  Slut på date -->
+                            <div class="date">
+                                <label for="endDate">Slutdatum:</label>
+                                <input type="date" name="endDate" id="endDate">
+                                <p class="instruction">Lämna blank om pågående</p>
+                            </div> <!-- Slut på date -->
+                        </div> <!-- Slut på date-container -->
+                        <input type="submit" value="Ändra">
+                    </form>
+                </main>
+            </div> <!-- Slut på main-container -->
+        </div> <!-- Slut på grid-container -->
+    </div> <!-- Slut på div.wrapper -->
+</body>
+
+</html>
