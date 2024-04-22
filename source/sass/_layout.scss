@@ -215,6 +215,12 @@ form {
         display: flex;
         justify-content: space-between;
     }
+    p.instruction {
+        font-size: 0.9em;
+    }
+    #endDate {
+        margin-bottom: 0.5em;
+    }
     label {
         font-size: 1.1em;
         margin-left: 0.9em;

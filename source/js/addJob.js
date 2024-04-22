@@ -89,6 +89,7 @@ async function addJob(e) {
         });
         if (response.ok) {
             const data = await response.json();
+            window.location.href = 'index.html';
             console.log(data);
         } else {
             errorSpan.innerText = error;
